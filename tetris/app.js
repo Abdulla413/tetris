@@ -63,7 +63,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     // Randomly select a Tetromino and its first rotation 
     let random = Math.floor(Math.random()*theTetrominoes.length)
+    console.log(random,'this is random')
     let current = theTetrominoes[random][currentRotation]
+    console.log(current, 'this is current')
 
   // Draw the tetromino
     
@@ -159,24 +161,24 @@ document.addEventListener('DOMContentLoaded', ()=>{
   // fix rotate of tetrominos at the edge
 
   function isAtRight(){
-    return current.some(index => (currentPosition + index)%width === 0)
+    return current.some(index => (currentPosition + index) % width === 0)
   }
 
   function isAtLeft(){
-    return current.some(index => (currentPosition + index)% width === 0)
+    return current.some(index => (currentPosition + index) % width === 0)
   }
 
-function checkRotatePosition(){
+function checkRotatePosition(P){
   P=P || currentPosition 
   if((P+1)%width < 4){
     if(isAtRight()){
       currentPosition += 1
       checkRotatePosition(P)
     }
-  } else if(p%width>5) {
+  } else if(P%width>5) {
     if(isAtLeft()){
       currentPosition -=1
-      checkRotatePosition(p)
+      checkRotatePosition(P)
     }
 
   }
